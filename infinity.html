@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #000;
+            color: #0f0;
+            font-family: 'Courier New', Courier, monospace;
+            overflow: hidden;
+        }
+
+        #cmatrix {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+        }
+
+        .title-wrapper {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 20px;
+        }
+
+  button {
+  padding: 25px 30px;
+  background-color: #050801;
+  color: #03e9f4;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  letter-spacing: 4px;
+  overflow: hidden;
+  transition: 0.5s;
+  cursor: pointer;
+ }
+
+button:hover {
+    background: #03e9f4;
+    color: #050801;
+    box-shadow: 0 0 5px #03e9f4,
+                0 0 25px #03e9f4,
+                0 0 50px #03e9f4,
+                0 0 200px #03e9f4;
+     -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
+ }
+    </style>
+    <title>The infinity</title>
+</head>
+<body>
+    <canvas id="cmatrix"></canvas>
+    <div class="title-wrapper">
+        <h1>Hacked By The Infinity</h1>
+<p>Hello. I am The Infinity.net from VSO-Zone community. </p>
+<p style="text-align: center;">
+  <a href="https://t.me/VSO_zone">
+    <img src="https://i.postimg.cc/VNhhqWr7/D5-D2-B500-32-CF-44-E5-8-FC3-04-A44-CD274-C1.jpg" alt="logo">
+  </a>
+</p>
+<p>As an ethical ally in the ongoing pursuit of advanced cybersecurity, I identified vulnerabilities in your digital platform. This message serves to enlighten and educate on the importance of robust defenses.</p>
+    <p>Take these learnings to heart and invest in powerful cyber-solutions to protect your users and their data. This is not a threat but an opportunity to improve and grow stronger.</p>
+
+<button><a href="https://t.me/world_of_infinityFun"> Go to The Infinity</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('cmatrix');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const fontSize = canvas.width / 18;
+        const columns = canvas.width / fontSize;
+
+        const drops = [];
+        for (let i = 0; i < columns; i++) {
+            drops[i] = 1;
+        }
+
+        function update() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#0f0';
+            ctx.font = `${fontSize}px 'Courier New'`;
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = String.fromCharCode(Math.random() * 94 + 33);
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+
+                drops[i]++;
+            }
+
+            requestAnimationFrame(update);
+        }
+
+        update();
+    </script>
+</body>
+</html>
